@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://h73avh1ewrln"]
+[gd_scene load_steps=32 format=3 uid="uid://cwp5q4xc22wb5"]
 
 [ext_resource type="Script" path="res://src/game/main.gd" id="1_wla53"]
 [ext_resource type="Texture2D" uid="uid://crdpofuw7hn8w" path="res://assets/sprites/violin.png" id="2_nh3jv"]
@@ -10,23 +10,24 @@
 [ext_resource type="AudioStream" uid="uid://d00egj42uj7as" path="res://assets/audio/bgm/Duel on the Clocktower.mp3" id="7_v2egg"]
 [ext_resource type="PackedScene" uid="uid://dyu5xx0rdpjbr" path="res://src/ui/block.tscn" id="8_2y211"]
 [ext_resource type="Script" path="res://src/game/puzzle_playback.gd" id="8_o8c5m"]
+[ext_resource type="AudioStream" uid="uid://2j02ndyfs8wc" path="res://assets/audio/bgm/Duel on the Clocktower Without Melody.mp3" id="8_qd50p"]
 [ext_resource type="PackedScene" uid="uid://dj1hvsugohk4t" path="res://src/game/instrument.tscn" id="10_da6wl"]
 [ext_resource type="AudioStream" uid="uid://b88dyitxaxtv4" path="res://assets/audio/bgm/piano1.mp3" id="10_dbqd4"]
 [ext_resource type="AudioStream" uid="uid://ccpme7448l54c" path="res://assets/audio/bgm/piano2.mp3" id="11_fwxva"]
-[ext_resource type="AudioStream" uid="uid://cidsa2y5ebv51" path="res://assets/audio/bgm/violinb1.mp3" id="11_lru6h"]
 [ext_resource type="AudioStream" uid="uid://by5wk3gosrw6p" path="res://assets/audio/bgm/violin3.mp3" id="12_jrjl7"]
 [ext_resource type="AudioStream" uid="uid://b63g310b3fbqc" path="res://assets/audio/bgm/violin1.mp3" id="12_tof00"]
 [ext_resource type="AudioStream" uid="uid://blnvsxns1up8x" path="res://assets/audio/bgm/violin2.mp3" id="13_1q42e"]
-[ext_resource type="AudioStream" uid="uid://bnm8ogmw67cwl" path="res://assets/audio/bgm/violinb2.mp3" id="13_7t7vi"]
+[ext_resource type="AudioStream" uid="uid://cidsa2y5ebv51" path="res://assets/audio/bgm/piano-v1.mp3" id="13_6l3ff"]
 [ext_resource type="AudioStream" uid="uid://c7melklwannme" path="res://assets/audio/bgm/piano5.mp3" id="14_8u72x"]
-[ext_resource type="AudioStream" uid="uid://b3jkd4db0w3xl" path="res://assets/audio/bgm/violinb5.mp3" id="15_waod4"]
+[ext_resource type="AudioStream" uid="uid://bnm8ogmw67cwl" path="res://assets/audio/bgm/piano-v2.mp3" id="15_uje8v"]
 [ext_resource type="AudioStream" uid="uid://cpo2tpj8kgsu5" path="res://assets/audio/bgm/piano6.mp3" id="16_1fa1w"]
-[ext_resource type="AudioStream" uid="uid://ck4kl7iuop57e" path="res://assets/audio/bgm/violinb6.mp3" id="17_5h338"]
-[ext_resource type="AudioStream" uid="uid://cliuel8tcxswc" path="res://assets/audio/bgm/pianob1.mp3" id="18_r5aiy"]
-[ext_resource type="AudioStream" uid="uid://c51afmkj4vut4" path="res://assets/audio/bgm/pianob2.mp3" id="20_1cot3"]
-[ext_resource type="AudioStream" uid="uid://bi57h7j34ovo2" path="res://assets/audio/bgm/pianob3.mp3" id="22_8tkh7"]
-[ext_resource type="AudioStream" uid="uid://cmymtyl0ddpf5" path="res://assets/audio/bgm/pianob4.mp3" id="24_skrd8"]
+[ext_resource type="AudioStream" uid="uid://b3jkd4db0w3xl" path="res://assets/audio/bgm/piano-v5.mp3" id="17_tirtc"]
+[ext_resource type="AudioStream" uid="uid://cliuel8tcxswc" path="res://assets/audio/bgm/violin-p1.mp3" id="18_n27ob"]
+[ext_resource type="AudioStream" uid="uid://c51afmkj4vut4" path="res://assets/audio/bgm/violin-p2.mp3" id="20_u0ya5"]
+[ext_resource type="AudioStream" uid="uid://bi57h7j34ovo2" path="res://assets/audio/bgm/violin-p3.mp3" id="22_anqbr"]
+[ext_resource type="AudioStream" uid="uid://cmymtyl0ddpf5" path="res://assets/audio/bgm/violin-p4.mp3" id="24_bfmo0"]
 [ext_resource type="AudioStream" uid="uid://c7gt7ycywgrtx" path="res://assets/audio/bgm/violin4.mp3" id="25_ewtv3"]
+[ext_resource type="AudioStream" uid="uid://ck4kl7iuop57e" path="res://assets/audio/bgm/piano-v6.mp3" id="27_cnm4w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdrql"]
 bg_color = Color(0.619608, 0.431373, 0.756863, 1)
@@ -48,6 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wla53")
 right_answer = Array[Array]([[NodePath("")], []])
+initial_song_time = 32.0
 metadata/_edit_lock_ = true
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
@@ -117,6 +119,7 @@ flat = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="Playback"]
 stream = ExtResource("7_v2egg")
+volume_db = 4.0
 bus = &"BGM"
 
 [node name="PuzzlePlayback" type="HSlider" parent="."]
@@ -175,77 +178,14 @@ icon = ExtResource("7_g7g0a")
 flat = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="PuzzlePlayback"]
-stream = ExtResource("7_v2egg")
+stream = ExtResource("8_qd50p")
+volume_db = 5.0
 bus = &"BGM"
 
-[node name="Blocks" type="Control" parent="."]
+[node name="AssignedBlocks" type="Control" parent="."]
 anchors_preset = 0
 mouse_filter = 1
 metadata/_edit_lock_ = true
-
-[node name="Block" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 209.0
-offset_top = 513.0
-offset_right = 209.0
-offset_bottom = 513.0
-song_piano = ExtResource("10_dbqd4")
-song_violin = ExtResource("11_lru6h")
-
-[node name="Block2" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 457.0
-offset_top = 504.0
-offset_right = 457.0
-offset_bottom = 504.0
-song_piano = ExtResource("11_fwxva")
-song_violin = ExtResource("13_7t7vi")
-
-[node name="Block3" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 695.0
-offset_top = 497.0
-offset_right = 695.0
-offset_bottom = 497.0
-song_piano = ExtResource("14_8u72x")
-song_violin = ExtResource("15_waod4")
-
-[node name="Block4" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 934.0
-offset_top = 494.0
-offset_right = 934.0
-offset_bottom = 494.0
-song_piano = ExtResource("16_1fa1w")
-song_violin = ExtResource("17_5h338")
-
-[node name="Block5" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 211.0
-offset_top = 644.0
-offset_right = 211.0
-offset_bottom = 644.0
-song_piano = ExtResource("18_r5aiy")
-song_violin = ExtResource("12_tof00")
-
-[node name="Block6" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 464.0
-offset_top = 641.0
-offset_right = 464.0
-offset_bottom = 641.0
-song_piano = ExtResource("20_1cot3")
-song_violin = ExtResource("13_1q42e")
-
-[node name="Block7" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 702.0
-offset_top = 635.0
-offset_right = 702.0
-offset_bottom = 635.0
-song_piano = ExtResource("22_8tkh7")
-song_violin = ExtResource("12_jrjl7")
-
-[node name="Block8" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 945.0
-offset_top = 630.0
-offset_right = 945.0
-offset_bottom = 630.0
-song_piano = ExtResource("24_skrd8")
-song_violin = ExtResource("25_ewtv3")
 
 [node name="Instruments" type="Control" parent="."]
 anchors_preset = 0
@@ -262,9 +202,95 @@ offset_bottom = 340.0
 texture = ExtResource("2_nh3jv")
 is_piano = false
 
-[node name="OverBlocks" type="Control" parent="."]
+[node name="UnassignedBlocks" type="Control" parent="."]
 anchors_preset = 0
-metadata/_edit_lock_ = true
+mouse_filter = 1
+
+[node name="Block" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 209.0
+offset_top = 513.0
+offset_right = 209.0
+offset_bottom = 513.0
+song_piano = ExtResource("10_dbqd4")
+song_violin = ExtResource("13_6l3ff")
+
+[node name="Block2" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 457.0
+offset_top = 504.0
+offset_right = 457.0
+offset_bottom = 504.0
+song_piano = ExtResource("11_fwxva")
+song_violin = ExtResource("15_uje8v")
+
+[node name="Block3" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 695.0
+offset_top = 497.0
+offset_right = 695.0
+offset_bottom = 497.0
+song_piano = ExtResource("14_8u72x")
+song_violin = ExtResource("17_tirtc")
+
+[node name="Block4" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 934.0
+offset_top = 494.0
+offset_right = 934.0
+offset_bottom = 494.0
+song_piano = ExtResource("16_1fa1w")
+song_violin = ExtResource("27_cnm4w")
+
+[node name="Block5" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 211.0
+offset_top = 644.0
+offset_right = 211.0
+offset_bottom = 644.0
+song_piano = ExtResource("18_n27ob")
+song_violin = ExtResource("12_tof00")
+
+[node name="Block6" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 464.0
+offset_top = 641.0
+offset_right = 464.0
+offset_bottom = 641.0
+song_piano = ExtResource("20_u0ya5")
+song_violin = ExtResource("13_1q42e")
+
+[node name="Block7" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 702.0
+offset_top = 635.0
+offset_right = 702.0
+offset_bottom = 635.0
+song_piano = ExtResource("22_anqbr")
+song_violin = ExtResource("12_jrjl7")
+
+[node name="Block8" parent="UnassignedBlocks" instance=ExtResource("8_2y211")]
+offset_left = 945.0
+offset_top = 630.0
+offset_right = 945.0
+offset_bottom = 630.0
+song_piano = ExtResource("24_bfmo0")
+song_violin = ExtResource("25_ewtv3")
+
+[node name="HideDebug" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Block11" parent="HideDebug" instance=ExtResource("8_2y211")]
+offset_left = 695.0
+offset_top = 505.0
+offset_right = 695.0
+offset_bottom = 505.0
+song_piano = ExtResource("10_dbqd4")
+song_violin = ExtResource("13_6l3ff")
+
+[node name="Block22" parent="HideDebug" instance=ExtResource("8_2y211")]
+offset_left = 943.0
+offset_top = 496.0
+offset_right = 943.0
+offset_bottom = 496.0
+song_piano = ExtResource("11_fwxva")
+song_violin = ExtResource("15_uje8v")
 
 [connection signal="drag_ended" from="Playback" to="Playback" method="_on_drag_ended"]
 [connection signal="pressed" from="Playback/Button" to="Playback" method="_on_button_pressed"]

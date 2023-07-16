@@ -55,9 +55,13 @@ texture = ExtResource("3_hcaka")
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_utv43")
+volume_db = -4.0
+bus = &"BGM"
 
 [node name="BGM2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_utv43")
+volume_db = -4.0
+bus = &"BGM"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

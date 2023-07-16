@@ -8,7 +8,7 @@ func _ready():
 
 
 func play(v):
-	$BGM.play(v)
+	$BGM.play(v + initial_song_time)
 
 func stop():
 	$BGM.stop()

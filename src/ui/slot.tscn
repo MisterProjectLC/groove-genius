@@ -27,5 +27,4 @@ pivot_offset = Vector2(125, 75)
 texture = ExtResource("2_m0cri")
 metadata/_edit_lock_ = true
 
-[connection signal="mouse_entered" from="Square" to="." method="_on_square_mouse_entered"]
-[connection signal="mouse_exited" from="Square" to="." method="_on_square_mouse_exited"]
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

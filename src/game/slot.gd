@@ -1,20 +1,17 @@
 extends Control
 
-var mouse_on = false
 var block = null
 
-signal mouse_on_changed(slot)
-
+signal pressed(slot)
 
 func set_block(this_block):
 	block = this_block
 
 
-func _on_square_mouse_entered():
-	mouse_on = true
-	emit_signal('mouse_on_changed', self, mouse_on)
+func get_block():
+	return block
 
 
-func _on_square_mouse_exited():
-	mouse_on = false
-	emit_signal('mouse_on_changed', self, mouse_on)
+func _on_gui_input(event):
+	if event is InputEventMouseButton and event.is_pressed():
+		emit_signal('pressed', self)

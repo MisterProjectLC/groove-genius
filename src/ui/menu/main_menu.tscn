@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c467dxpgvwtor" path="res://assets/sprites/Title.png" id="5_gs8kn"]
 [ext_resource type="PackedScene" uid="uid://b3rdnci654m2g" path="res://src/ui/menu/menu_button.tscn" id="6_hbl3d"]
 [ext_resource type="PackedScene" uid="uid://cc6rckhiyshl8" path="res://src/ui/menu/options_menu.tscn" id="7_cn34p"]
-[ext_resource type="AudioStream" uid="uid://cif0gokf3qqa0" path="res://assets/audio/bgm/Into_The_Unknown.mp3" id="8_51mj0"]
+[ext_resource type="AudioStream" uid="uid://d00egj42uj7as" path="res://assets/audio/bgm/Duel on the Clocktower.mp3" id="8_mmwab"]
 
 [sub_resource type="Animation" id="Animation_sqqfm"]
 resource_name = "Idle"
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(80, 300), Vector2(-185, 300)]
+"values": [Vector2(80, 400), Vector2(-185, 400)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,7 +56,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-185, 300), Vector2(80, 300)]
+"values": [Vector2(-185, 400), Vector2(80, 400)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6xrrj"]
@@ -118,10 +118,10 @@ texture = ExtResource("5_gs8kn")
 
 [node name="Buttons" type="Control" parent="."]
 anchors_preset = 0
-offset_left = 76.0
-offset_top = 370.0
-offset_right = 261.0
-offset_bottom = 564.0
+offset_left = 80.0
+offset_top = 400.0
+offset_right = 265.0
+offset_bottom = 594.0
 
 [node name="Start" parent="Buttons" instance=ExtResource("6_hbl3d")]
 layout_mode = 0
@@ -152,10 +152,10 @@ focus_neighbor_bottom = NodePath("../Start")
 text = "Quit"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("7_cn34p")]
-offset_left = -189.0
-offset_top = 370.0
-offset_right = -4.0
-offset_bottom = 585.0
+offset_left = -185.0
+offset_top = 400.0
+offset_right = 0.0
+offset_bottom = 615.0
 metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -164,7 +164,7 @@ libraries = {
 }
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_51mj0")
+stream = ExtResource("8_mmwab")
 autoplay = true
 bus = &"BGM"
 

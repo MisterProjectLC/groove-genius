@@ -7,6 +7,16 @@ class_name Playback
 @onready var button = $Button
 var paused = true
 
+var initial_song_time = 0.0
+var song_block_count = 4 : set = set_song_block_duration
+
+func _ready():
+	max_value = GlobalNode.BLOCK_DURATION*song_block_count
+
+func set_song_block_duration(s):
+	song_block_count = s
+	max_value = GlobalNode.BLOCK_DURATION*song_block_count
+
 
 func _process(delta):
 	if !paused:
@@ -34,6 +44,7 @@ func toggle_pause():
 
 func _on_drag_ended(_value_changed):
 	if !paused:
+		stop()
 		play(value)
 
 func _on_button_pressed():
