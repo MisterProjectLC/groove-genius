@@ -156,6 +156,7 @@ offset_left = -189.0
 offset_top = 370.0
 offset_right = -4.0
 offset_bottom = 585.0
+metadata/_edit_lock_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -165,7 +166,9 @@ libraries = {
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_51mj0")
 autoplay = true
+bus = &"BGM"
 
 [connection signal="button_up" from="Buttons/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="Buttons/Options" to="." method="_on_options_button_up"]
 [connection signal="button_up" from="Buttons/Quit" to="." method="_on_quit_button_up"]
+[connection signal="back_pressed" from="OptionsMenu" to="." method="_on_options_menu_back_pressed"]

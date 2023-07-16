@@ -6,6 +6,9 @@ var music_volume = 0.5
 var sound_volume = 0.5
 var souvenirs = [false, false, false, false, false, false, false]
 
+const BLOCK_DURATION = 2.0
+
+
 var _in_cutscene = false
 func set_in_cutscene(value):
 	_in_cutscene = value

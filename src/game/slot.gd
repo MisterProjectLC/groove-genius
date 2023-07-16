@@ -1,13 +1,13 @@
 extends Control
 
-@export var _label = ""
 var mouse_on = false
+var block = null
 
 signal mouse_on_changed(slot)
 
 
-func get_label():
-	return _label
+func set_block(this_block):
+	block = this_block
 
 
 func _on_square_mouse_entered():

@@ -1,16 +1,32 @@
-[gd_scene load_steps=15 format=3 uid="uid://h73avh1ewrln"]
+[gd_scene load_steps=31 format=3 uid="uid://h73avh1ewrln"]
 
 [ext_resource type="Script" path="res://src/game/main.gd" id="1_wla53"]
 [ext_resource type="Texture2D" uid="uid://crdpofuw7hn8w" path="res://assets/sprites/violin.png" id="2_nh3jv"]
-[ext_resource type="Texture2D" uid="uid://do5bmxn6ty4ke" path="res://assets/sprites/piano.png" id="3_xcb0w"]
+[ext_resource type="Script" path="res://src/game/song_playback.gd" id="3_t0umq"]
 [ext_resource type="Texture2D" uid="uid://dj5ean3an8skn" path="res://assets/ui/small_star.png" id="4_fkxap"]
-[ext_resource type="Script" path="res://src/game/playback.gd" id="5_8e8u1"]
 [ext_resource type="Texture2D" uid="uid://dvcuk5b1upous" path="res://assets/sprites/Pause.png" id="5_g2ri8"]
 [ext_resource type="FontFile" uid="uid://cx6s3op6yjnhp" path="res://assets/ui/fonts/Spring Snowstorm.ttf" id="5_o8ntm"]
 [ext_resource type="Texture2D" uid="uid://cetgs2gkx2t86" path="res://assets/sprites/Play.png" id="7_g7g0a"]
 [ext_resource type="AudioStream" uid="uid://d00egj42uj7as" path="res://assets/audio/bgm/Duel on the Clocktower.mp3" id="7_v2egg"]
 [ext_resource type="PackedScene" uid="uid://dyu5xx0rdpjbr" path="res://src/ui/block.tscn" id="8_2y211"]
-[ext_resource type="PackedScene" uid="uid://be5xkyyc8tno4" path="res://src/ui/slot.tscn" id="9_ih6pt"]
+[ext_resource type="Script" path="res://src/game/puzzle_playback.gd" id="8_o8c5m"]
+[ext_resource type="PackedScene" uid="uid://dj1hvsugohk4t" path="res://src/game/instrument.tscn" id="10_da6wl"]
+[ext_resource type="AudioStream" uid="uid://b88dyitxaxtv4" path="res://assets/audio/bgm/piano1.mp3" id="10_dbqd4"]
+[ext_resource type="AudioStream" uid="uid://ccpme7448l54c" path="res://assets/audio/bgm/piano2.mp3" id="11_fwxva"]
+[ext_resource type="AudioStream" uid="uid://cidsa2y5ebv51" path="res://assets/audio/bgm/violinb1.mp3" id="11_lru6h"]
+[ext_resource type="AudioStream" uid="uid://by5wk3gosrw6p" path="res://assets/audio/bgm/violin3.mp3" id="12_jrjl7"]
+[ext_resource type="AudioStream" uid="uid://b63g310b3fbqc" path="res://assets/audio/bgm/violin1.mp3" id="12_tof00"]
+[ext_resource type="AudioStream" uid="uid://blnvsxns1up8x" path="res://assets/audio/bgm/violin2.mp3" id="13_1q42e"]
+[ext_resource type="AudioStream" uid="uid://bnm8ogmw67cwl" path="res://assets/audio/bgm/violinb2.mp3" id="13_7t7vi"]
+[ext_resource type="AudioStream" uid="uid://c7melklwannme" path="res://assets/audio/bgm/piano5.mp3" id="14_8u72x"]
+[ext_resource type="AudioStream" uid="uid://b3jkd4db0w3xl" path="res://assets/audio/bgm/violinb5.mp3" id="15_waod4"]
+[ext_resource type="AudioStream" uid="uid://cpo2tpj8kgsu5" path="res://assets/audio/bgm/piano6.mp3" id="16_1fa1w"]
+[ext_resource type="AudioStream" uid="uid://ck4kl7iuop57e" path="res://assets/audio/bgm/violinb6.mp3" id="17_5h338"]
+[ext_resource type="AudioStream" uid="uid://cliuel8tcxswc" path="res://assets/audio/bgm/pianob1.mp3" id="18_r5aiy"]
+[ext_resource type="AudioStream" uid="uid://c51afmkj4vut4" path="res://assets/audio/bgm/pianob2.mp3" id="20_1cot3"]
+[ext_resource type="AudioStream" uid="uid://bi57h7j34ovo2" path="res://assets/audio/bgm/pianob3.mp3" id="22_8tkh7"]
+[ext_resource type="AudioStream" uid="uid://cmymtyl0ddpf5" path="res://assets/audio/bgm/pianob4.mp3" id="24_skrd8"]
+[ext_resource type="AudioStream" uid="uid://c7gt7ycywgrtx" path="res://assets/audio/bgm/violin4.mp3" id="25_ewtv3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mdrql"]
 bg_color = Color(0.619608, 0.431373, 0.756863, 1)
@@ -31,6 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wla53")
+right_answer = Array[Array]([[NodePath("")], []])
 metadata/_edit_lock_ = true
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
@@ -61,10 +78,11 @@ min_value = 0.001
 max_value = 1.0
 step = 0.0
 value = 0.001
-script = ExtResource("5_8e8u1")
+scrollable = false
+script = ExtResource("3_t0umq")
+music = ExtResource("7_v2egg")
 play_texture = ExtResource("7_g7g0a")
 pause_texture = ExtResource("5_g2ri8")
-music = ExtResource("7_v2egg")
 
 [node name="Title" type="Label" parent="Playback"]
 layout_mode = 1
@@ -99,89 +117,156 @@ flat = true
 
 [node name="BGM" type="AudioStreamPlayer" parent="Playback"]
 stream = ExtResource("7_v2egg")
+bus = &"BGM"
 
-[node name="Piano" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 981.0
-offset_top = 148.0
-offset_right = 1239.0
-offset_bottom = 296.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_xcb0w")
+[node name="PuzzlePlayback" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -406.0
+offset_top = 541.0
+offset_right = 555.0
+offset_bottom = 595.0
+grow_horizontal = 2
+theme_override_icons/grabber = ExtResource("4_fkxap")
+theme_override_icons/grabber_highlight = ExtResource("4_fkxap")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_mdrql")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_mdrql")
+min_value = 0.001
+max_value = 12.0
+step = 0.0
+value = 0.001
+scrollable = false
+script = ExtResource("8_o8c5m")
+play_texture = ExtResource("7_g7g0a")
+pause_texture = ExtResource("5_g2ri8")
 
-[node name="Violin" type="TextureRect" parent="."]
+[node name="Title" type="Label" parent="PuzzlePlayback"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -79.5
+offset_top = -52.0
+offset_right = 48.5
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.866667, 0.65098, 1)
+theme_override_fonts/font = ExtResource("5_o8ntm")
+theme_override_font_sizes/font_size = 30
+text = "Music"
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="PuzzlePlayback"]
 layout_mode = 0
-offset_left = 998.0
-offset_top = 308.0
-offset_right = 1204.0
-offset_bottom = 521.0
+offset_left = -112.0
+offset_top = -9.0
+offset_right = 76.0
+offset_bottom = 126.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_nh3jv")
+shortcut = SubResource("Shortcut_ai6jk")
+icon = ExtResource("7_g7g0a")
+flat = true
+
+[node name="BGM" type="AudioStreamPlayer" parent="PuzzlePlayback"]
+stream = ExtResource("7_v2egg")
+bus = &"BGM"
 
 [node name="Blocks" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 mouse_filter = 1
+metadata/_edit_lock_ = true
 
 [node name="Block" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 153.0
-offset_top = 548.0
-offset_right = 153.0
-offset_bottom = 548.0
+offset_left = 209.0
+offset_top = 513.0
+offset_right = 209.0
+offset_bottom = 513.0
+song_piano = ExtResource("10_dbqd4")
+song_violin = ExtResource("11_lru6h")
 
 [node name="Block2" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 449.0
-offset_top = 535.0
-offset_right = 449.0
-offset_bottom = 535.0
+offset_left = 457.0
+offset_top = 504.0
+offset_right = 457.0
+offset_bottom = 504.0
+song_piano = ExtResource("11_fwxva")
+song_violin = ExtResource("13_7t7vi")
 
 [node name="Block3" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 732.0
-offset_top = 542.0
-offset_right = 732.0
-offset_bottom = 542.0
+offset_left = 695.0
+offset_top = 497.0
+offset_right = 695.0
+offset_bottom = 497.0
+song_piano = ExtResource("14_8u72x")
+song_violin = ExtResource("15_waod4")
 
 [node name="Block4" parent="Blocks" instance=ExtResource("8_2y211")]
-offset_left = 1015.0
-offset_top = 546.0
-offset_right = 1015.0
-offset_bottom = 546.0
+offset_left = 934.0
+offset_top = 494.0
+offset_right = 934.0
+offset_bottom = 494.0
+song_piano = ExtResource("16_1fa1w")
+song_violin = ExtResource("17_5h338")
 
-[node name="Slots" type="Control" parent="."]
+[node name="Block5" parent="Blocks" instance=ExtResource("8_2y211")]
+offset_left = 211.0
+offset_top = 644.0
+offset_right = 211.0
+offset_bottom = 644.0
+song_piano = ExtResource("18_r5aiy")
+song_violin = ExtResource("12_tof00")
+
+[node name="Block6" parent="Blocks" instance=ExtResource("8_2y211")]
+offset_left = 464.0
+offset_top = 641.0
+offset_right = 464.0
+offset_bottom = 641.0
+song_piano = ExtResource("20_1cot3")
+song_violin = ExtResource("13_1q42e")
+
+[node name="Block7" parent="Blocks" instance=ExtResource("8_2y211")]
+offset_left = 702.0
+offset_top = 635.0
+offset_right = 702.0
+offset_bottom = 635.0
+song_piano = ExtResource("22_8tkh7")
+song_violin = ExtResource("12_jrjl7")
+
+[node name="Block8" parent="Blocks" instance=ExtResource("8_2y211")]
+offset_left = 945.0
+offset_top = 630.0
+offset_right = 945.0
+offset_bottom = 630.0
+song_piano = ExtResource("24_skrd8")
+song_violin = ExtResource("25_ewtv3")
+
+[node name="Instruments" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 mouse_filter = 1
+metadata/_edit_lock_ = true
 
-[node name="Slot" parent="Slots" instance=ExtResource("9_ih6pt")]
-offset_left = 177.0
-offset_top = 202.0
-offset_right = 177.0
-offset_bottom = 202.0
+[node name="Piano" parent="Instruments" instance=ExtResource("10_da6wl")]
 
-[node name="Slot2" parent="Slots" instance=ExtResource("9_ih6pt")]
-offset_left = 556.0
-offset_top = 193.0
-offset_right = 556.0
-offset_bottom = 193.0
-
-[node name="Slot3" parent="Slots" instance=ExtResource("9_ih6pt")]
-offset_left = 179.0
-offset_top = 377.0
-offset_right = 179.0
-offset_bottom = 377.0
-
-[node name="Slot4" parent="Slots" instance=ExtResource("9_ih6pt")]
-offset_left = 574.0
-offset_top = 375.0
-offset_right = 574.0
-offset_bottom = 375.0
+[node name="Violin" parent="Instruments" instance=ExtResource("10_da6wl")]
+offset_left = 1031.0
+offset_top = 340.0
+offset_right = 1031.0
+offset_bottom = 340.0
+texture = ExtResource("2_nh3jv")
+is_piano = false
 
 [node name="OverBlocks" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [connection signal="drag_ended" from="Playback" to="Playback" method="_on_drag_ended"]
 [connection signal="pressed" from="Playback/Button" to="Playback" method="_on_button_pressed"]
+[connection signal="drag_ended" from="PuzzlePlayback" to="PuzzlePlayback" method="_on_drag_ended"]
+[connection signal="pressed" from="PuzzlePlayback/Button" to="PuzzlePlayback" method="_on_button_pressed"]

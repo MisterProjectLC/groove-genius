@@ -20,6 +20,11 @@ config/icon="res://icon.svg"
 Transitions="*res://src/ui/menu/transitions.tscn"
 GlobalNode="*res://src/global/global.tscn"
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=750
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

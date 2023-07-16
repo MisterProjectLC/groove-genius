@@ -1,14 +1,11 @@
 extends Control
 
-@export var _label = ""
+@export var song_piano : AudioStream
+@export var song_violin : AudioStream
 var mouse_on = 0
+var assigned = false
 
-signal clicked()
 signal dropped(block)
-
-
-func get_label():
-	return _label
 
 func _process(delta):
 	if mouse_on > 0:
@@ -22,8 +19,5 @@ func _on_square_gui_input(event):
 		if event.is_pressed():
 			mouse_on = 1
 		else:
-			if mouse_on < 1.25:
-				emit_signal("clicked")
-			else:
-				emit_signal("dropped", self)
+			emit_signal("dropped", self)
 			mouse_on = 0
