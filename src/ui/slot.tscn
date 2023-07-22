@@ -1,11 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://be5xkyyc8tno4"]
 
 [ext_resource type="Script" path="res://src/game/slot.gd" id="1_eh3h3"]
-[ext_resource type="Texture2D" uid="uid://do5bmxn6ty4ke" path="res://assets/sprites/piano.png" id="2_m0cri"]
+[ext_resource type="Texture2D" uid="uid://kphhntphsig7" path="res://assets/sprites/box.png" id="2_y60vp"]
 
 [node name="Slot" type="Control" groups=["slot"]]
 layout_mode = 3
 anchors_preset = 0
+scale = Vector2(0.25, 0.25)
 mouse_filter = 1
 script = ExtResource("1_eh3h3")
 
@@ -16,15 +17,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -75.0
-offset_right = 133.0
-offset_bottom = 73.0
+offset_left = -5.0
+offset_right = 1076.0
+offset_bottom = 712.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.75, 0.75)
-pivot_offset = Vector2(125, 75)
-texture = ExtResource("2_m0cri")
-metadata/_edit_lock_ = true
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(-540, -356)
+texture = ExtResource("2_y60vp")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]

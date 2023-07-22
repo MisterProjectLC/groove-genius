@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cmqul7jfuakjs"
+path="res://.godot/imported/Duel on the Clocktower Without Piano.mp3-558b1d754ccd34012c99e90d84e02c7b.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/bgm/Duel on the Clocktower Without Piano.mp3"
+dest_files=["res://.godot/imported/Duel on the Clocktower Without Piano.mp3-558b1d754ccd34012c99e90d84e02c7b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

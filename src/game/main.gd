@@ -1,6 +1,5 @@
 extends Control
 
-@export var right_answer : Array[Array]
 @export var initial_song_time = 0.0
 @export var song_block_count = 4
 
@@ -10,6 +9,7 @@ extends Control
 
 @onready var song_playback = $Playback
 @onready var puzzle_playback = $PuzzlePlayback
+@onready var advance = $Advance
 
 var current_block = null
 var block_count = 0
@@ -23,6 +23,9 @@ func _ready():
 	
 	for slot in get_tree().get_nodes_in_group('slot'):
 		slot.connect('pressed', Callable(self, 'on_slot_pressed'))
+	
+	for instrument in instruments.get_children():
+		instrument.set_slot_index(song_block_count)
 	
 	song_playback.initial_song_time = initial_song_time
 	puzzle_playback.initial_song_time = initial_song_time
@@ -81,3 +84,17 @@ func on_block_dropped(block):
 	await get_tree().process_frame
 	assigned_blocks.remove_child(block)
 	blocks.add_child(block)
+
+
+func _on_puzzle_playback_reached_end():
+	for instrument in instruments.get_children():
+		if !instrument.check_correctness():
+			return
+	
+	advance.visible = true
+
+
+func _on_advance_pressed():
+	Transitions.play("BlackOut")
+	await Transitions.transition_finished
+	GlobalNode.advance_stage()

@@ -17,7 +17,7 @@ func _on_start_button_up():
 
 func on_transition_finished(_anim_name):
 	if starting:
-		get_tree().change_scene_to_file("res://src/game/main.tscn")
+		GlobalNode.advance_stage()
 	elif quitting:
 		get_tree().quit()
 

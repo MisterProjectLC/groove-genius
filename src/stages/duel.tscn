@@ -1,0 +1,114 @@
+[gd_scene load_steps=24 format=3 uid="uid://b5snl0pvubmtr"]
+
+[ext_resource type="PackedScene" uid="uid://cwp5q4xc22wb5" path="res://src/game/main.tscn" id="1_vtbb5"]
+[ext_resource type="AudioStream" uid="uid://c665huur65aef" path="res://assets/audio/bgm/piano7.mp3" id="2_43d5m"]
+[ext_resource type="Texture2D" uid="uid://k2kl2ab2s0h1" path="res://assets/sprites/art/Duel.png" id="2_wolcx"]
+[ext_resource type="AudioStream" uid="uid://biq6f8tkdp8li" path="res://assets/audio/bgm/piano-v7.mp3" id="3_btol6"]
+[ext_resource type="Texture2D" uid="uid://hykj3ghiurkd" path="res://assets/sprites/patterns/piano7.png" id="4_yfj77"]
+[ext_resource type="AudioStream" uid="uid://ug7pkdnogph6" path="res://assets/audio/bgm/piano8.mp3" id="5_ngblc"]
+[ext_resource type="AudioStream" uid="uid://dqyd2hpb58seg" path="res://assets/audio/bgm/piano-v8.mp3" id="6_lujlf"]
+[ext_resource type="Texture2D" uid="uid://c6uvb2oleu1iw" path="res://assets/sprites/patterns/piano8.png" id="7_s6pf2"]
+[ext_resource type="AudioStream" uid="uid://b4kmpitp5pvij" path="res://assets/audio/bgm/piano9.mp3" id="8_7jk62"]
+[ext_resource type="AudioStream" uid="uid://b8apcvfivukl0" path="res://assets/audio/bgm/piano-v9.mp3" id="9_41rsl"]
+[ext_resource type="Texture2D" uid="uid://dx7fj8xyfek8" path="res://assets/sprites/patterns/piano9.png" id="10_8vxxb"]
+[ext_resource type="AudioStream" uid="uid://b6dq08tlc4gq8" path="res://assets/audio/bgm/violin-p5.mp3" id="11_6wkdm"]
+[ext_resource type="AudioStream" uid="uid://l64qiv0fh2l2" path="res://assets/audio/bgm/violin5.mp3" id="12_jlajf"]
+[ext_resource type="Texture2D" uid="uid://c280qif4mtc4i" path="res://assets/sprites/patterns/violin5.png" id="13_y1xxm"]
+[ext_resource type="AudioStream" uid="uid://cd6a651rtxj2b" path="res://assets/audio/bgm/violin-p6.mp3" id="14_qkq7n"]
+[ext_resource type="AudioStream" uid="uid://c44sv0123s7nk" path="res://assets/audio/bgm/violin6.mp3" id="15_p5gnv"]
+[ext_resource type="Texture2D" uid="uid://bvtj7kktv108q" path="res://assets/sprites/patterns/violin6.png" id="16_dxs64"]
+[ext_resource type="AudioStream" uid="uid://c5ettkfvmk1by" path="res://assets/audio/bgm/violin-p7.mp3" id="17_lg0ct"]
+[ext_resource type="AudioStream" uid="uid://d3o1nll5f31wb" path="res://assets/audio/bgm/violin7.mp3" id="18_b5ddn"]
+[ext_resource type="Texture2D" uid="uid://dn4frbo74st2" path="res://assets/sprites/patterns/violin7.png" id="19_l6ncr"]
+[ext_resource type="AudioStream" uid="uid://cj7hhca4sboxk" path="res://assets/audio/bgm/violin-p8.mp3" id="20_2t6qk"]
+[ext_resource type="AudioStream" uid="uid://b7bii3sg7uskh" path="res://assets/audio/bgm/violin8.mp3" id="21_gtlq3"]
+[ext_resource type="Texture2D" uid="uid://ixbeaakhasvt" path="res://assets/sprites/patterns/violin8.png" id="22_v6i32"]
+
+[node name="Main" instance=ExtResource("1_vtbb5")]
+initial_song_time = 24.0
+
+[node name="Block" parent="UnassignedBlocks" index="0"]
+offset_left = 610.0
+offset_top = 553.0
+offset_right = 610.0
+offset_bottom = 553.0
+song_piano = ExtResource("2_43d5m")
+song_violin = ExtResource("3_btol6")
+image = ExtResource("4_yfj77")
+right_time = [0, 2]
+
+[node name="Block2" parent="UnassignedBlocks" index="1"]
+offset_left = 455.0
+offset_top = 556.0
+offset_right = 455.0
+offset_bottom = 556.0
+song_piano = ExtResource("5_ngblc")
+song_violin = ExtResource("6_lujlf")
+image = ExtResource("7_s6pf2")
+right_time = [1]
+
+[node name="Block3" parent="UnassignedBlocks" index="2"]
+offset_left = 296.0
+offset_top = 452.0
+offset_right = 296.0
+offset_bottom = 452.0
+song_piano = ExtResource("2_43d5m")
+song_violin = ExtResource("3_btol6")
+image = ExtResource("4_yfj77")
+right_time = [0, 2]
+
+[node name="Block4" parent="UnassignedBlocks" index="3"]
+offset_left = 293.0
+offset_top = 559.0
+offset_right = 293.0
+offset_bottom = 559.0
+song_piano = ExtResource("8_7jk62")
+song_violin = ExtResource("9_41rsl")
+image = ExtResource("10_8vxxb")
+right_time = [3]
+
+[node name="Block5" parent="UnassignedBlocks" index="4"]
+offset_left = 618.0
+offset_top = 449.0
+offset_right = 618.0
+offset_bottom = 449.0
+song_piano = ExtResource("11_6wkdm")
+song_violin = ExtResource("12_jlajf")
+image = ExtResource("13_y1xxm")
+
+[node name="Block6" parent="UnassignedBlocks" index="5"]
+offset_left = 126.0
+offset_top = 446.0
+offset_right = 126.0
+offset_bottom = 446.0
+song_piano = ExtResource("14_qkq7n")
+song_violin = ExtResource("15_p5gnv")
+image = ExtResource("16_dxs64")
+right_time = [1]
+
+[node name="Block7" parent="UnassignedBlocks" index="6"]
+offset_left = 456.0
+offset_top = 450.0
+offset_right = 456.0
+offset_bottom = 450.0
+song_piano = ExtResource("17_lg0ct")
+song_violin = ExtResource("18_b5ddn")
+image = ExtResource("19_l6ncr")
+right_time = [2]
+
+[node name="Block8" parent="UnassignedBlocks" index="7"]
+offset_left = 123.0
+offset_top = 567.0
+offset_right = 123.0
+offset_bottom = 567.0
+song_piano = ExtResource("20_2t6qk")
+song_violin = ExtResource("21_gtlq3")
+image = ExtResource("22_v6i32")
+right_time = [3]
+
+[node name="Image" parent="." index="8"]
+offset_left = 947.0
+offset_top = 65.0
+offset_right = 1854.0
+offset_bottom = 1436.0
+texture = ExtResource("2_wolcx")

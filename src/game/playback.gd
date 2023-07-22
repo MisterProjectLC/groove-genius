@@ -1,6 +1,8 @@
 extends HSlider
 class_name Playback
 
+signal reached_end()
+
 @export var play_texture : Texture
 @export var pause_texture : Texture
 
@@ -23,6 +25,8 @@ func _process(delta):
 		value += delta
 		if value >= max_value:
 			toggle_pause()
+			value = 0
+			emit_signal('reached_end')
 
 
 func play(_v):

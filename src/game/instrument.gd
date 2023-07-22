@@ -1,7 +1,9 @@
+@tool
 extends Control
 
 @export var texture : Texture
 @export var is_piano = true
+@export var disabled = false
 
 @onready var image = $Image
 @onready var slots = $Slots
@@ -12,9 +14,14 @@ extends Control
 var next_music_index = 0
 var first_player_index = true
 
-
 func _ready():
 	image.texture = texture
+	visible = !disabled
+
+
+func set_slot_index(max_index):
+	for i in range(max_index, slots.get_child_count()):
+		slots.call_deferred('remove_child', slots.get_child(i))
 
 
 func play(time : float):
@@ -40,6 +47,29 @@ func stop():
 	music.stop()
 	music2.stop()
 	timer.stop()
+
+
+func check_correctness():
+	if disabled:
+		return true
+	
+	var i = 0
+	for slot in slots.get_children():
+		var block = slot.get_block()
+		if block == null:
+			return false
+		var is_time_right = false
+		for this_time in block.right_time:
+			if this_time == i:
+				is_time_right = true
+				break
+		if !is_time_right:
+			return false
+		if block.should_be_piano != is_piano:
+			return false
+		i += 1
+	
+	return true
 
 
 func _on_timer_timeout():

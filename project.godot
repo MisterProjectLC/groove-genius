@@ -22,8 +22,8 @@ GlobalNode="*res://src/global/global.tscn"
 
 [display]
 
-window/size/viewport_width=1600
-window/size/viewport_height=750
+window/size/viewport_width=1300
+window/size/viewport_height=660
 
 [rendering]
 

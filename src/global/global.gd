@@ -2,6 +2,9 @@ extends Node
 
 signal on_cutscene_changed(in_cutscene)
 
+@export var stages : Array[PackedScene]
+var current_stage = 0
+
 var music_volume = 0.5
 var sound_volume = 0.5
 var souvenirs = [false, false, false, false, false, false, false]
@@ -24,6 +27,13 @@ func get_camera_zoom():
 
 func set_camera_zoom(z):
 	camera_zoom = z
+
+
+func advance_stage():
+	get_tree().change_scene_to_packed(stages[current_stage])
+	current_stage += 1
+	if current_stage >= stages.size():
+		current_stage = 0
 
 
 @export var _debug = false

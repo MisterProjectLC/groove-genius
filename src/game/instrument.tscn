@@ -21,35 +21,35 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Slot" parent="Slots" instance=ExtResource("2_g5qqh")]
-offset_left = -886.0
-offset_top = 6.0
-offset_right = -886.0
-offset_bottom = 6.0
+offset_left = -887.0
+offset_top = 1.0
+offset_right = -887.0
+offset_bottom = 1.0
 
 [node name="Slot2" parent="Slots" instance=ExtResource("2_g5qqh")]
-offset_left = -668.0
-offset_top = -2.0
-offset_right = -668.0
-offset_bottom = -2.0
+offset_left = -724.0
+offset_top = -3.0
+offset_right = -724.0
+offset_bottom = -3.0
 
 [node name="Slot3" parent="Slots" instance=ExtResource("2_g5qqh")]
-offset_left = -449.0
-offset_top = -1.0
-offset_right = -449.0
-offset_bottom = -1.0
+offset_left = -554.0
+offset_top = -6.0
+offset_right = -554.0
+offset_bottom = -6.0
 
 [node name="Slot4" parent="Slots" instance=ExtResource("2_g5qqh")]
-offset_left = -226.0
-offset_top = -4.0
-offset_right = -226.0
-offset_bottom = -4.0
+offset_left = -383.0
+offset_top = -9.0
+offset_right = -383.0
+offset_bottom = -9.0
 
 [node name="Image" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -60.0
-offset_top = -36.0
-offset_right = 198.0
-offset_bottom = 112.0
+offset_left = -251.0
+offset_top = -47.0
+offset_right = 7.0
+offset_bottom = 101.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_hcaka")
 

@@ -1,7 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cns8mjexuj7ks"]
+[gd_scene load_steps=7 format=3 uid="uid://cns8mjexuj7ks"]
 
 [ext_resource type="Script" path="res://src/global/global.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bbmqe4706n6qr" path="res://src/stages/princess.tscn" id="3_02kxv"]
+[ext_resource type="PackedScene" uid="uid://cer43yulphdkv" path="res://src/stages/intro.tscn" id="3_qdlch"]
+[ext_resource type="PackedScene" uid="uid://c31pqlv57wgbm" path="res://src/stages/knight.tscn" id="3_upgs1"]
+[ext_resource type="PackedScene" uid="uid://cg8peekvi3uyp" path="res://src/ui/menu/main_menu.tscn" id="3_weenb"]
+[ext_resource type="PackedScene" uid="uid://b5snl0pvubmtr" path="res://src/stages/duel.tscn" id="5_vci8y"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1")
+stages = Array[PackedScene]([ExtResource("3_qdlch"), ExtResource("3_02kxv"), ExtResource("3_upgs1"), ExtResource("5_vci8y"), ExtResource("3_weenb")])
 _debug = true
