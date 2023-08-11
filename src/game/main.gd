@@ -40,17 +40,21 @@ func _process(_delta):
 
 
 func on_slot_pressed(slot):
+	var this_block = slot.get_block()
+	if this_block:
+		on_block_deassigned(slot)
+	
 	if current_block:
 		on_block_assigned(current_block, slot)
-	else:
-		var this_block = slot.get_block()
-		if this_block:
-			on_block_deassigned(this_block, slot)
+	
+	if this_block:
+		on_block_held(this_block)
 
 
 func on_block_pressed(block):
 	if current_block == block:
 		on_block_dropped(block)
+	
 	elif current_block == null:
 		on_block_held(block)
 		await get_tree().process_frame
@@ -67,8 +71,7 @@ func on_block_assigned(block, slot):
 	block.global_position = slot.global_position
 
 
-func on_block_deassigned(block, slot):
-	on_block_held(block)
+func on_block_deassigned(slot):
 	block_assigned_count -= 1
 	puzzle_playback.visible = false
 	
